@@ -81,7 +81,6 @@ export async function callJson<T>(schema: ZodType<T>, opts: CallJsonOptions): Pr
         model: AI_MODEL,
         messages,
         temperature,
-        response_format: { type: "json_object" },
       });
 
       const raw = completion.choices[0]?.message?.content ?? "";
