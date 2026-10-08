@@ -8,7 +8,7 @@ import type { ZodType } from "zod";
 const AI_BASE_URL =
   process.env.AI_BASE_URL ||
   "https://generativelanguage.googleapis.com/v1beta/openai/";
-export const AI_MODEL = process.env.AI_MODEL || "gemini-2.5-flash";
+export const AI_MODEL = process.env.AI_MODEL || "gemini-3.8-flash";
 
 let client: OpenAI | null = null;
 
@@ -21,7 +21,7 @@ function getClient(): OpenAI {
       "No API key is set on the server. Set AI_API_KEY (legacy: GEMINI_API_KEY)."
     );
   }
-  client = new OpenAI({ apiKey, baseURL: AI_BASE_URL });
+client = new OpenAI({ apiKey, baseURL: AI_BASE_URL, maxRetries: 0 });
   return client;
 }
 
